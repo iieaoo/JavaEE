@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--标识当前的 XML 实现的是哪个接口-->
+<mapper namespace="com.example.springbootdemo4.mapper.ArticleMapper">
+
+    <select id="getById" resultType="com.example.springbootdemo4.entity.vo.ArticleinfoVO">
+        select a.*,u.username from articleinfo a
+        left join userinfo u on u.id=a.uid
+        where a.id=#{id}
+    </select>
+
+</mapper>

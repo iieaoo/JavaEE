@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--标识当前的 XML 实现的是哪个接口-->
+<mapper namespace="com.example.springbootdemo4.mapper.UserMapper">
+
+    <resultMap id="baseMap" type="com.example.springbootdemo4.entity.Userinfo">
+        <id column="id" property="id"></id>
+        <result column="username" property="name"></result>
+        <result column="password" property="password"></result>
+        <result column="photo" property="photo"></result>
+        <result column="createtime" property="createtime"></result>
+        <result column="updatetime" property="updatetime"></result>
+        <result column="state" property="state"></result>
+    </resultMap>
+
+    <select id="getUserById" resultType="com.example.springbootdemo4.entity.Userinfo">
+        select * from userinfo where id=#{user_id};
+    </select>
+
+    <select id="getUserByName" resultType="com.example.springbootdemo4.entity.Userinfo">
+        select * from userinfo where username=#{username}
+    </select>
+
+    <select id="getAll" resultType="com.example.springbootdemo4.entity.Userinfo">
+        select id,username as name,password,photo,createtime,updatetime,state from userinfo
+    </select>
+
+    <insert id="add">
+        insert into userinfo(username,password,createtime,updatetime)
+            values(#{username},#{password},#{createtime},#{updatetime})
+    </insert>
+
+    <insert id="addGetId" useGeneratedKeys="true" keyProperty="id">
+        insert into userinfo(username,password,createtime,updatetime)
+        values(#{username},#{password},#{createtime},#{updatetime})
+    </insert>
+
+    <update id="upUserName">
+        update userinfo set username=#{username} where id=#{id}
+    </update>
+
+    <delete id="delById">
+        delete from userinfo where id=#{id}
+    </delete>
+
+    <select id="getListByOrder" resultType="com.example.springbootdemo4.entity.Userinfo">
+        select * from userinfo order by id ${order}
+    </select>
+
+    <select id="login" resultType="com.example.springbootdemo4.entity.Userinfo">
+        select * from userinfo where username='${username}' and 'password=${password}'
+    </select>
+
+    <select id="getListByName" resultType="com.example.springbootdemo4.entity.Userinfo">
+        select * from userinfo where username like concat('%',#{username},'%')
+    </select>
+
+    <insert id="add2">
+        insert into userinfo(username,
+        <if test="photo!=null">
+            photo,
+        </if>
+        password)
+        values(#{username},
+        <if test="photo!=null">
+            #{photo},
+        </if>
+        #{password})
+    </insert>
+
+    <insert id="add3">
+        insert into userinfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username!=null">
+                username,
+            </if>
+            <if test="password!=null">
+                password,
+            </if>
+            <if test="photo!=null">
+                photo
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username!=null">
+                #{username},
+            </if>
+            <if test="password!=null">
+                #{password},
+            </if>
+            <if test="photo!=null">
+                #{photo},
+            </if>
+        </trim>
+
+    </insert>
+
+    <select id="getListByParam" resultType="com.example.springbootdemo4.entity.Userinfo">
+        select * from userinfo
+        <trim prefix="where" prefixOverrides="and">
+            <if test="username!=null">
+                username=#{username}
+            </if>
+            <if test="password!=null">
+                password=#{password}
+            </if>
+        </trim>
+<!--        <where>-->
+<!--            <if test="username!=null">-->
+<!--                username=#{username}-->
+<!--            </if>-->
+<!--            <if test="password!=null">-->
+<!--                and password=#{password}-->
+<!--            </if>-->
+<!--        </where>-->
+    </select>
+
+    <update id="update2">
+        update userinfo
+        <set>
+            <if test="username!=null">
+                username=#{username},
+            </if>
+            <if test="password!=null">
+                password=#{password},
+            </if>
+            <if test="photo!=null">
+                photo=#{photo}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    
+    <delete id="delts">
+        delete from userinfo where id in 
+        <foreach collection="ids" open="(" close=")" item="id" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
