@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜数字</title>
+</head>
+<body>
+    <div>请输入要猜的数字</div>
+    <input type="text">
+    <button>提交</button>
+    <!-- 使用这个 div 来显示结果 -->
+    <div class="result"></div>
+
+    <script>
+        //1、生成一个 1-100 随机的整数
+        let toGuess = parseInt(100 * Math.random()) + 1;
+        console.log(toGuess);
+        //2、进行猜数字操作
+        let input = document.querySelector('input');
+        let resultDiv = document.querySelector('.result');
+        let button = document.querySelector('button');
+        button.onclick = function() {
+            //3、取出输入框中的内容
+            if (input.value == '') {
+                //用户啥都没输入
+                return;
+            }
+            let inputNum = parseInt(input.value);
+            //4、比较一下大小关系
+            if (inputNum < toGuess) {
+                //低了
+                resultDiv.innerHTML = '低了';
+            }else if (inputNum > toGuess){
+                //高了
+                resultDiv.innerHTML = '高了';
+            }else{
+                //猜对了
+                resultDiv.innerHTML = '猜对了 ';
+            }
+        }
+    </script>
+</body>
+</html>

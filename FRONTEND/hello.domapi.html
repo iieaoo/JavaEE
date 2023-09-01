@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div class="box">abc</div>
+    <div id="id">def</div>
+    <h3>
+        <span>
+            <input type="text">
+        </span>
+    </h3> -->
+
+    <!-- <img src="头像.jpg" alt="这是在云南" title="我自己"> -->
+
+    <!-- <input type="text">
+    <button>隐藏密码</button> -->
+
+    <!-- <div id="one" class="light" style="font-size: 20px; height: 500px;">这是一个 div，点击之后，字体变大</div>
+
+    <style>
+        .light {
+            /*日间模式*/
+            color: black;
+            background-color: white;
+        }
+
+        .dark {
+            /* 夜间模式 */
+            color: white;
+            background-color: black;
+        }
+    </style> -->
+
+    <div class="one">
+        这是一个 div
+    </div>
+
+    <ul>
+        <li>11</li>
+        <li>22</li>
+    </ul>
+
+    <script>
+        let ul = document.querySelector('ul');
+        for (let n = 3; n <= 10; n++) {
+            let li = document.createElement('li');
+            li.innerHTML = n + '' + n;
+            ul.appendChild(li);
+        }
+        //删除 33 这个元素
+        let toDelete = document.querySelectorAll('li')[2];
+        console.log(toDelete);
+
+        ul.removeChild(toDelete);
+
+        // let input = document.createElement('input');
+        // //让输入框里默认就显示 hello 这个内容
+        // input.value = 'hello';
+
+        // let div = document.querySelector('.one');
+        // div.appendChild(input);
+
+        // let div = document.querySelector('#one');
+        // div.onclick = function() {
+        //     //点击 div 切换日间模式和夜间模式
+        //     if (div.className == 'dark') {
+        //         div.className = 'light';
+        //     } else {
+        //         div.className = 'dark';
+        //     }
+        // }
+
+        // div.onclick = function() {
+        //     // 先获取到当前的字体大小
+        //     let fontsize = parseInt(div.style.fontSize);
+        //     fontsize += 10;
+        //     //设置字体大小的时候，不要忘记单位
+        //     div.style.fontSize =fontsize + 'px';           
+        // }
+        // let input = document.querySelector('input');
+        // let button = document.querySelector('button');
+        // button.onclick = function() {
+        //     if (input.type == 'text') {
+        //         input.type = 'password';
+        //         button.innerHTML = '显示密码';
+        //     } else {
+        //         input.type = 'text';
+        //         button.innerHTML = '隐藏密码';
+        //     }
+
+            // console.log(input.value);
+            // console.log(input.innerHTML);
+            // let value = parseInt(input.value);
+            // value += 1;
+            // input.value = value;
+        //}
+
+        // let img = document.querySelector('img');
+        // console.dir
+
+        // img.onclick = function() {
+        //     console.log(img.src);
+        //     console.log(img.title);
+        //     console.log(img.width);
+        //     console.log(img.alt);
+        //     console.log(img.height);
+        //     img.src = '刘亦菲.jpg';
+        // }
+        
+        // let div = document.querySelector('.box');
+        // div.onclick = function() {
+        //     console.log(div.innerHTML);
+        //     div.innerHTML += 'a';
+        // }
+
+        // let elem1 = document.querySelector('.box');
+        // //console.log(elem1);
+        // console.dir(elem1);
+
+        // let elem2 = document.querySelector('#id');
+        // console.log(elem2);
+
+        // let elem3 = document.querySelector('h3>span>input');
+        // console.log(elem3);
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 引入  -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script>
+        $.ajax({
+            type: 'get',
+            url: 'https://www.sogou.com?studentName=zhangsan',
+            // 此处 success 就声明了一个回调函数，就会在服务器响应返回到浏览器的时候触发该回调~
+            // 正是此处的 回调 体现了“异步”
+            success: function(data) {
+                // data 则是响应的正文部分。
+                console.log("当服务器返回的响应到达浏览器之后，浏览器出发该回调，通知到咱们的代码中");
+            }
+        });
+        console.log("浏览器立即往下执行后续代码");
+    </script>
+</body>
+</html>

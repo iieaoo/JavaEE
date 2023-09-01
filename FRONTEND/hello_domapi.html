@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom api</title>
+</head>
+<body>
+    <!-- <div class="box">abc</div>
+    <div id="id">def</div>
+    <h3>
+        <span>
+            <input type="text">
+        </span>
+    </h3> -->
+
+    <!-- <img src="头像.png" alt="这是一个帅帅的鸡哥" title="我鸡哥"> -->
+
+    <!-- <input type="text">
+    <button>隐藏密码</button> -->
+
+    <!-- <div id="one" class="light" style="font-size: 20px; height: 500px;">这是一个 div, 点击之后字体放大</div> -->
+
+
+
+    <!-- <style>
+        .light {
+            /* 日间模式 */
+            color: black;
+            background-color: white;
+        }
+
+        .dark {
+            /* 夜间模式 */
+            color: white;
+            background-color: black;
+        }
+    </style> -->
+
+    <!-- <div class="one">
+        这是一个 div
+    </div> -->
+
+    <ul>
+        <li>11</li>
+        <li>22</li>
+    </ul>
+
+    <script>
+        let ul = document.querySelector('ul');
+        for (let n = 3; n < 10; n++) {
+            let li = document.createElement('li');
+            li.innerHTML = n + '' + n;
+            ul.appendChild(li);
+        }
+
+        // 删除 33 这个元素
+        let toDelete = document.querySelectorAll('li')[2];
+        console.log(toDelete);
+
+        ul.removeChild(toDelete);
+
+
+        // let input = document.createElement('input');
+        // // 让输入框里默认就显示 hello 这个内容
+        // input.value = 'hello';
+
+        // let div = document.querySelector('.one');
+        // div.appendChild(input);
+
+
+        // let div = document.querySelector('#one');
+        // div.onclick = function() {
+        //     // 点击 div 切换日间模式和夜间模式
+        //     if (div.className == 'dark') {
+        //         div.className = 'light';
+        //     } else {
+        //         div.className = 'dark';
+        //     }
+        // }
+
+
+        // let input = document.querySelector('input');
+        // let button = document.querySelector('button');
+        // button.onclick = function() {
+        //     if (input.type == 'text') {
+        //         input.type = 'password';
+        //         button.innerHTML = '显示密码';
+        //     } else {
+        //         input.type = 'text';
+        //         button.innerHTML = '隐藏密码';
+        //     }
+        // }
+
+
+        // let img = document.querySelector('img');
+        // console.dir(img);
+
+        // img.onclick = function() {
+        //     console.log(img.src);
+        //     console.log(img.title);
+        //     console.log(img.alt);
+        //     console.log(img.width);
+        //     console.log(img.height);
+        //     img.src = '美女小姐姐.jpg';
+        // }
+
+
+        // let elem1 = document.querySelector('.box');
+        // // console.log(elem1);
+        // console.dir(elem1);
+
+        // let elem2 = document.querySelector('#id');
+        // console.log(elem2);
+
+        // let elem3 = document.querySelector('h3>span>input');
+        // console.log(elem3);
+    </script>
+</body>
+</html>
